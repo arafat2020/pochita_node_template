@@ -1,6 +1,10 @@
-# Mini Nest - Lightweight Node.js Framework Template
+<div align="center">
+  <img src="assets/pochita.png" width="300" alt="Pochita Node Template Mascot">
+  <h1>Pochita Node Template</h1>
+  <p><i>A lightweight, decorator-based Node.js framework template inspired by NestJS</i></p>
+</div>
 
-Mini Nest is a lightweight, decorator-based Node.js template built on top of Express.js. It brings the power of NestJS-inspired architecture—such as Dependency Injection, Decorators, and Guards—to a minimalist Express environment without the heavy overhead.
+Pochita Node Template is a minimalist, decorator-driven Node.js template built on top of Express.js. It brings the architectural patterns and power of **NestJS**—such as Dependency Injection (DI), Decorators, and Guards—to an Express environment without the heavy overhead.
 
 ## Why use this template?
 
@@ -49,6 +53,16 @@ npm run dev
 ```bash
 npm run build
 npm start
+```
+
+### Testing
+
+```bash
+# Run all tests
+npm test
+
+# Run tests in watch mode
+npm run test:watch
 ```
 
 ---
