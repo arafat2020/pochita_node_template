@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="assets/pochita.png" width="300" style="border-radius: 50%;" alt="Pochita Node Template Mascot">
+  <img src="assets/pochita.png" width="300" alt="Pochita Node Template Mascot">
   <h1>Pochita Node Template</h1>
   <p><i>A lightweight, decorator-based Node.js framework template inspired by NestJS</i></p>
 </div>
