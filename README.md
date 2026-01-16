@@ -14,7 +14,8 @@ Standard Express.js often ends up with "spaghetti code" as the project grows. On
 - **Structure**: Enforces a Controller-Service pattern.
 - **Clean Code**: Uses modern TypeScript decorators for routing and DI.
 - **Flexibility**: It's still just Express under the hood. You have full control.
-- **Portability**: Very few dependencies (`express`, `reflect-metadata`, `chalk`).
+- **Flexible WebSocket**: Supports both Socket.IO and Native WS with Redis integration.
+- **Portability**: Very few dependencies (`express`, `reflect-metadata`, `chalk`, `ws`, `socket.io`).
 
 ---
 
@@ -31,6 +32,9 @@ Implement authentication and authorization logic using Guards. Apply them global
 
 ### 4. Context-aware Logger
 A stylish, Zsh-inspired logging utility that provides clear, color-coded feedback about server startup, route mapping, and runtime errors.
+
+### 5. Multi-Driver WebSocket
+Integrated `WSDriver` supporting both **Socket.IO** and **Native WebSockets** with optional **Redis Pub/Sub** for massive scalability.
 
 ---
 
@@ -126,6 +130,30 @@ export class AuthGuard implements CanActivate {
 export class AdminController { ... }
 ```
 
+### WebSocket Driver
+
+Easily switch between Socket.IO and Native WebSockets:
+
+```typescript
+import { WSDriver } from './core/ws/driver';
+
+const driver = new WSDriver({ 
+  server: httpServer, 
+  useSocketIO: true, // Toggle between Socket.IO and Native WS
+  redis: { host: 'localhost', port: 6379 } // Optional Redis scaling
+});
+
+await driver.start();
+
+// Publish to everyone
+driver.publish('chat-room', { msg: 'Hello everyone!' });
+
+// Subscribe programmatically
+driver.subscribe('chat-room', (data) => {
+  console.log('Received:', data);
+});
+```
+
 ---
 
 ## Project Structure
@@ -135,6 +163,7 @@ src/
 ├── core/             # Framework logic (DI, Bootstrap, Guards, Logger)
 │   ├── decorators/   # Routing and DI decorators
 │   ├── guards/       # Guard interfaces and logic
+│   ├── ws/           # WebSocket drivers & Redis Pub/Sub
 │   ├── bootstrap.ts  # Express initialization & Route mapping
 │   ├── container.ts  # DI Container logic
 │   └── logger.ts     # Custom logging utility

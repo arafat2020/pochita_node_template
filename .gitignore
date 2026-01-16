@@ -17,8 +17,6 @@ logs/
 # =========================
 # Environment variables
 # =========================
-.env
-.env.*
 
 # =========================
 # OS files
@@ -29,7 +27,6 @@ Thumbs.db
 # =========================
 # Editor / IDE
 # =========================
-.vscode/
 .idea/
 *.swp
 *.swo
@@ -38,3 +35,4 @@ Thumbs.db
 # Testing / Coverage
 # =========================
 coverage/
+config.bat
